@@ -3,10 +3,10 @@ import automate
 from selenium.common.exceptions import NoSuchElementException
 
 # くじURLリスト
-#kujiUrlList = [
-   # 'https://kuji.rakuten.co.jp/4351057845',
-    #'https://kuji.rakuten.co.jp/8c538152dd',
-#]
+# kujiUrlList = [
+#     'https://kuji.rakuten.co.jp/4351057845',
+#     'https://kuji.rakuten.co.jp/8c538152dd',
+# ]
 
 # ユーザーID
 userId = 'ssssssyunsukey@gmail.com'
