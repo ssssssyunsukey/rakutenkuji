@@ -3,10 +3,10 @@ import automate
 from selenium.common.exceptions import NoSuchElementException
 
 # くじURLリスト
-kujiUrlList = [
-    'https://kuji.rakuten.co.jp/4351057845',
-    'https://kuji.rakuten.co.jp/8c538152dd',
-]
+#kujiUrlList = [
+   # 'https://kuji.rakuten.co.jp/4351057845',
+    #'https://kuji.rakuten.co.jp/8c538152dd',
+#]
 
 # ユーザーID
 userId = 'ssssssyunsukey@gmail.com'
@@ -37,6 +37,13 @@ def openKujiBrowser(selenium, url):
 
 # seleniumに関するinstance生成を行う。
 selenium = automate.Selenium()
+
+#ラッキーくじ一覧サイトへアクセス
+selenium.access("https://rakucoin.appspot.com/rakuten/kuji/")
+selenium.stop(5)
+urls = selenium.find_element_xpath ("//table/tbody/tr/td/a")
+kujiUrlList = [url.get_attribute("href") for url in urls]
+
 
 # 楽天ログインページに移動
 selenium.access('https://grp01.id.rakuten.co.jp/rms/nid/vc?__event=login&service_id=top')
