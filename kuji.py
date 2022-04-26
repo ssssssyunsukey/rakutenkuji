@@ -42,7 +42,7 @@ selenium = automate.Selenium()
 selenium.access("https://rakucoin.appspot.com/rakuten/kuji/")
 selenium.stop(5)
 urls = selenium.find_element_xpath ("//table/tbody/tr/td/a")
-kujiUrlList = [url.get_attribute("href") for url in urls]
+kujiUrlList = [url_list.get_attribute("href") for url_list in urls]
 
 
 # 楽天ログインページに移動
