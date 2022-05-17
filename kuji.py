@@ -1,6 +1,22 @@
 import automate
+
+import time
+from selenium import webdriver
+# 最新のchromeのversionへ合わせるため。
+from webdriver_manager.chrome import ChromeDriverManager
+
 # 要素がない場合のエラーハンドリング
 from selenium.common.exceptions import NoSuchElementException
+
+
+#ラッキーくじ一覧サイトへアクセス
+chrome = webdriver.Chrome(ChromeDriverManager().install())
+chrome.get("https://rakucoin.appspot.com/rakuten/kuji/")
+time.sleep(5)
+#aタグの値を取得
+urls = chrome.find_elements_by_xpath ("//table/tbody/tr/td/a")
+#リスト:kujiUrlList へタグ:hrefの値を格納
+kujiUrlList = [url_list.get_attribute("href") for url_list in urls]
 
 # くじURLリスト
 # kujiUrlList = [
@@ -38,13 +54,6 @@ def openKujiBrowser(selenium, url):
 # seleniumに関するinstance生成を行う。
 selenium = automate.Selenium()
 
-#ラッキーくじ一覧サイトへアクセス
-selenium.access("https://rakucoin.appspot.com/rakuten/kuji/")
-selenium.stop(5)
-urls = selenium.find_element_xpath ("//table/tbody/tr/td/a")
-kujiUrlList = [url_list.get_attribute("href") for url_list in urls]
-
-
 # 楽天ログインページに移動
 selenium.access('https://grp01.id.rakuten.co.jp/rms/nid/vc?__event=login&service_id=top')
 # ページ読み込みのために遅延させる。
@@ -75,3 +84,4 @@ for url in kujiUrlList:
 
 # 処理終了
 selenium.quit()
+
