@@ -18,6 +18,8 @@ urls = chrome.find_elements_by_xpath ("//table/tbody/tr/td/a")
 #リスト:kujiUrlList へタグ:hrefの値を格納
 kujiUrlList = [url_list.get_attribute("href") for url_list in urls]
 
+chrome.quit()
+
 # くじURLリスト
 # kujiUrlList = [
 #     'https://kuji.rakuten.co.jp/4351057845',
