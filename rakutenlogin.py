@@ -39,6 +39,7 @@ for url_txt in url_txts:
         continue
     try:
         driver.get(url_txt)
+        time.sleep(5)
     except:
         print(f'{url_txt}に遷移出来ませんでした。')
         continue
